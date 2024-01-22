@@ -10,6 +10,8 @@ const StudentCard = ({onClose, visible,selectedStudentId}) => {
 	const lowestMark = Math.min(...marks);
 
 
+	
+
     if (!visible) return null
   return (
     <div id="container"

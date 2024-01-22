@@ -8,14 +8,16 @@ const [newData,setNewData] =useState([])
   const [showModal,setShowModal]=useState(false)
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const [formData, setFormData] = useState({
-    studentName: '',
-    language1: '',
-    english: '',
+    name: '',
+    Language1: '',
+    English: '',
     maths: '',
-    science: '',
-    social: '',
-    class:""
+    Science: '',
+    Social: '',
+    class:''
   });
+
+  console.log(newData,'gaaa')
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,22 +44,23 @@ const [newData,setNewData] =useState([])
     localStorage.setItem('students', JSON.stringify(updatedData));
   
     setFormData({
-      studentName: '',
-      language1: '',
-      english: '',
+      name: '',
+      Language1: '',
+      English: '',
       maths: '',
-      science: '',
-      social: '',
-      class:""
+      Science: '',
+      Social: '',
+      class:''
     });
   };
   
   useEffect(()=>{
-    const newdata =localStorage.getItem("student")
-    if (newdata) {
-      setNewData(JSON.parse(newdata));
+    const localdata =localStorage.getItem('students')
+    console.log(localdata)
+    if (localdata) {
+      setNewData(JSON.parse(localdata));
     }
-  },[data])
+  },[])
 
 
 
@@ -75,7 +78,7 @@ const [newData,setNewData] =useState([])
         </label>
         <input
           type="text"
-          name="studentName"
+          name="name"
           id="studentName"
           placeholder="Student Name"
           onChange={handleChange}
@@ -88,7 +91,7 @@ const [newData,setNewData] =useState([])
         Language 1
         </label>
         <input
-          name="language1"
+          name="Language1"
           id="username2"
           placeholder="Language 1"
           onChange={handleChange}
@@ -102,7 +105,7 @@ const [newData,setNewData] =useState([])
         English
         </label>
         <input
-          name="english"
+          name="English"
           id="username3"
           placeholder="English"
           onChange={handleChange}
@@ -123,7 +126,7 @@ const [newData,setNewData] =useState([])
         <input
         required
         type="number"
-          name="maths"
+          name="Maths"
           id="studentName"
           placeholder="Maths"
           onChange={handleChange}
@@ -137,7 +140,7 @@ const [newData,setNewData] =useState([])
         <input
           required
           type="number"
-          name="science"
+          name="Science"
           id="username1"
           placeholder="Science"
           onChange={handleChange}
@@ -151,7 +154,7 @@ const [newData,setNewData] =useState([])
         <input
          required
          type="number"
-          name="social"
+          name="Social"
           id="username2"
           placeholder="Social"
           onChange={handleChange}
@@ -178,7 +181,7 @@ const [newData,setNewData] =useState([])
 
   <div className="col-span-2">
     <button
-      type="button"
+      type="submit"
       onClick={handleSave}
       className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900 mt-4"
     >
@@ -260,7 +263,7 @@ const [newData,setNewData] =useState([])
 </div>
 
 {showModal && (
-          <StudentCard onClose={handleClose} visible={showModal} selectedStudentId={selectedStudentId} />
+          <StudentCard onClose={handleClose} visible={showModal} selectedStudentId={selectedStudentId} newData={newData} />
         )
       }
     
