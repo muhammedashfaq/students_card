@@ -1,10 +1,5 @@
-import { useEffect, useState } from "react";
-// import data from "./Data";
-import axios from "axios";
+
 const StudentCard = ({ onClose, visible, selectedStudentId }) => {
-
-  // const details = student.find((item) => item.id === selectedStudentId);
-
   const marks = Object.keys(selectedStudentId)
   .filter((key) => !isNaN(selectedStudentId[key]))
   .map((key) => parseInt(selectedStudentId[key]));
@@ -13,21 +8,8 @@ const StudentCard = ({ onClose, visible, selectedStudentId }) => {
   const averageMark = totalMark / marks.length;
   const highestMark = Math.max(...marks);
   const lowestMark = Math.min(...marks);
-
-
-
-
-
-
-  if (!visible) return null;
-
-
-
-
-
-  
-
-  return (
+ if (!visible) return null;
+return (
     <div
       id="container"
       className=" fixed inset-0 backdrop-blur-xl w-screen h-screen  flex justify-center items-center z-50 transition ease-in-out duration-700"

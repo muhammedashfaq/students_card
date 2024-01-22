@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import data from "./Data";
 import StudentCard from "./StudentCard";
-import axios from 'axios'
+import axios from "axios";
 function App() {
   const [newData, setNewData] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -29,38 +28,26 @@ function App() {
     setSelectedStudentId(null);
   };
 
-  const activeModal =async (id) => {
+  const activeModal = async (id) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/getastudent/${id}`
+      );
+      console.log("Response:", response);
 
-   
-      
-      console.log("selectedStudentId:", id);
-      
-    
-        try {
-          const response = await axios.post(`http://localhost:5000/getastudent/${id}`);
-          console.log("Response:", response);
-    
-          if (response.data.success) {
-            console.log(response);
-            setSelectedStudentId(response.data.data);
-            setShowModal(true);
-          } else {
-            console.log('wrong');
-          }
-
-
-        } catch (error) {
-          console.log(error);
-        }
-      
-    
-
-  }
-
-
+      if (response.data.success) {
+        console.log(response);
+        setSelectedStudentId(response.data.data);
+        setShowModal(true);
+      } else {
+        console.log("wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleSave = async (e) => {
     e.preventDefault();
-
     try {
       if (
         !formData.English ||
@@ -73,55 +60,38 @@ function App() {
       ) {
         return;
       }
-      const response = await axios.post("http://localhost:5000/addStudentDetails", formData)
-   
+      const response = await axios.post(
+        "http://localhost:5000/addStudentDetails",
+        formData
+      );
 
       if (response.data.success) {
-        getData()
+        getData();
       } else {
-        console.log('wrong')
-      }       
-
-  } catch (error) {
-    console.log(error);
-
-  }
-
-  }
-
-
-  const getData = async() => {
-
-    try {
-      
-      
-      const response = await axios.get("http://localhost:5000/getStudentsdetails")
-      if (response.data.success) {
-        console.log(response)
-        setNewData(response.data.data)
-      } else {
-        console.log('wrong')
+        console.log("wrong");
       }
-      
-      
     } catch (error) {
-        console.log(error)
+      console.log(error);
     }
-  }
-
-
+  };
+  const getData = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/getStudentsdetails"
+      );
+      if (response.data.success) {
+        console.log(response);
+        setNewData(response.data.data);
+      } else {
+        console.log("wrong");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    getData()
-
+    getData();
   }, []);
-
-
-
-
-
-
-
-
   return (
     <>
       <div className=" m-10">
@@ -332,7 +302,6 @@ function App() {
               </table>
             </div>
           </div>
-
           {showModal && (
             <StudentCard
               onClose={handleClose}
