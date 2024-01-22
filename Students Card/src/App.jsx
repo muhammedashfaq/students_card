@@ -36,7 +36,10 @@ const [newData,setNewData] =useState([])
     setSelectedStudentId(id)
   }
 
-  const handleSave = () => {
+  const handleSave = (e) => {
+
+    e.preventDefault();
+    
     const uniqueId = new Date().getTime().toString()
     const newData = { id: uniqueId, ...formData };
     const existingData = JSON.parse(localStorage.getItem('students')) || [];
@@ -67,7 +70,7 @@ const [newData,setNewData] =useState([])
   return (
     <>
 <div className=' m-10'>
-    <button onClick={()=>localStorage.clear("students")}>clos</button>
+    <button onClick={()=>localStorage.clear("students")}>Clear Local Storage</button>
     <div className='w-full flex justify-center items-center'>
     <div className="w-max h-max border-solid border-2 p-8 border-sky-500 grid grid-cols-2 gap-4">
   <div>
@@ -82,6 +85,7 @@ const [newData,setNewData] =useState([])
           id="studentName"
           placeholder="Student Name"
           onChange={handleChange}
+          required
           className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
         />
       </div>
@@ -109,8 +113,8 @@ const [newData,setNewData] =useState([])
           id="username3"
           placeholder="English"
           onChange={handleChange}
-          required
           type="number"
+          required
           className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
         />
       </div>
@@ -181,7 +185,7 @@ const [newData,setNewData] =useState([])
 
   <div className="col-span-2">
     <button
-      type="submit"
+      type="button"
       onClick={handleSave}
       className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900 mt-4"
     >
