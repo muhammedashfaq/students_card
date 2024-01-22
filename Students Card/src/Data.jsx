@@ -2,7 +2,7 @@ const data = [
   {
     id: 1,
     name: "Athena Weissnat",
-    class:"X-A",
+    classD:"X-A",
     Language1: 85,
     English: 90,
     Maths: 78,
@@ -13,7 +13,7 @@ const data = [
     id: 2,
     name: "John Doe",
     
-    class:"X-A",
+    classD:"X-A",
     Language1: 75,
     English: 80,
     Maths: 92,
@@ -24,7 +24,7 @@ const data = [
     id: 3,
     name: "Jane Smith",
     Language1: 92,
-    class:"X-C",
+    classD:"X-C",
     English: 88,
     Maths: 95,
     Science: 90,
@@ -34,7 +34,7 @@ const data = [
     id: 4,
     name: "Michael Johnson",
     Language1: 80,
-    class:"X-B",
+    classD:"X-B",
     English: 85,
     Maths: 75,
     Science: 78,
@@ -43,7 +43,7 @@ const data = [
   {
     id: 5,
     name: "Emily Brown",
-    class:"X-D",
+    classD:"X-D",
     Language1: 88,
     English: 92,
     Maths: 89,
@@ -52,7 +52,7 @@ const data = [
   },
   {
     id: 6,
-    class:"X-A",
+    classD:"X-A",
     name: "Daniel Williams",
     Language1: 78,
     English: 82,
@@ -62,7 +62,7 @@ const data = [
   },
   {
     id: 7,
-    class:"X-A",
+    classD:"X-A",
     name: "Olivia Davis",
     Language1: 95,
     English: 88,
@@ -72,7 +72,7 @@ const data = [
   },
   {
     id: 8,
-    class:"X-E",
+    classD:"X-E",
     name: "Ethan Miller",
     Language1: 85,
     English: 90,
@@ -82,7 +82,7 @@ const data = [
   },
   {
     id: 9,
-    class:"X-D",
+    classD:"X-D",
     name: "Sophia Wilson",
     Language1: 92,
     English: 78,
@@ -92,7 +92,7 @@ const data = [
   },
   {
     id: 10,
-    class:"X-C",
+    classD:"X-C",
     name: "Liam Moore",
     Language1: 80,
     English: 92,
